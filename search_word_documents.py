@@ -18,6 +18,18 @@ def is_word_there(list_docs, keyword):
            
     return(out_list)
         
-
-list_docs = ["The is a new document.", "several books are here", "Book in here has a different color"]
+def search_multi_words(list_docs, keywords):
+    """
+    >>> list_docs = ["The is a new document.", "several books are here", "Book in here has a different color."]
+    >>> keywords = ['book','the']
+    >>> search_multi_words(list_docs, keywords)
+    {'book': [2], 'the': [0]}
+    """
+    key_dict={}
+    for key in keywords:
+        key_dict[key]= is_word_there(list_docs,key)
+    return key_dict
+	
+list_docs = ["The is a new document.", "several books are here", "Book in here has a different color."]
 print(is_word_there(list_docs, 'book'))
+print(search_multi_words(list_docs , ['book','the']))
